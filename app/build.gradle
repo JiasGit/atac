@@ -1,0 +1,159 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk 32
+    dataBinding {
+        enabled = true
+    }
+    defaultConfig {
+        applicationId "com.atact.community"
+        minSdk 24
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+            signingConfig signingConfigs.debug
+//            buildConfigField "String", "APP_CENTER_KEY", "\"3f5b76dc-69c0-4615-b43b-4eedc8c677e0\""
+        }
+    }
+    buildscript {
+        configurations.all {
+            resolutionStrategy {
+                dependencySubstitution {
+                    substitute module('net.sf.proguard:proguard-gradle') with module('com.guardsquare:proguard-gradle:7.1.0-beta5')
+                }
+//                force 'net.sf.proguard:proguard-gradle:7.1.0-beta5'
+            }
+        }
+    }
+    androidExtensions {
+        experimental = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    packagingOptions {
+        resources {
+            exclude 'META-INF/NOTICE.md'
+            exclude 'META-INF/LICENSE.md'
+        }
+    }
+}
+
+dependencies {
+
+    def roomVersion = "2.4.2"
+    def rxJavaVersion = "2.2.4"
+    def rxAndroidVersion = "2.1.0"
+    def lifecycleVersion = "2.5.1"
+    def recyclerViewVersion = "1.1.0"
+    def kotlinVersion = "1.4.32"
+    def navigationVersion = '2.3.4'
+    def lottieVersion = "3.6.1"
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    implementation "androidx.cardview:cardview:1.0.0"
+
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+
+    //Security - safetly manage keys and encrypt files and sharedpreferences
+    implementation 'androidx.security:security-crypto:1.1.0-alpha02'
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0" // same as above
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.9.0" // retrofit calladapter flowable
+    implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
+
+    // Koin
+    implementation "org.koin:koin-core:2.2.2"
+    implementation "org.koin:koin-android:2.2.2"
+    implementation "org.koin:koin-android-viewmodel:2.2.2"
+    androidTestImplementation "org.koin:koin-test:2.2.2"
+
+    // Room
+    implementation "androidx.room:room-runtime:$roomVersion"
+//    annotationProcessor "androidx.room:room-compiler:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"  // Not working, use annotationProcessor instead
+    implementation "androidx.room:room-ktx:$roomVersion"
+    implementation "androidx.room:room-rxjava2:$roomVersion"
+    testImplementation "androidx.room:room-testing:$roomVersion"
+
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    //work
+    implementation 'androidx.work:work-runtime-ktx:2.7.1'
+    implementation 'com.synnapps:carouselview:0.1.5'
+
+    // Timber - for debugging
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    // javarx2
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+
+//     viewmodel
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+
+    // Recycleview
+    implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
+
+    //TextDrawable
+    implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+
+    // for navigation
+    // implementation "androidx.navigation:navigation-safe-args-gradle-plugin:2.1.0-alpha05"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+    // Lottie for adding animation gif (bluetooth loading, etc)
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    testImplementation group: 'org.hamcrest', name: 'hamcrest-library', version: '2.2'
+
+    //For charts
+    implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
+
+    //Custome progress bar
+    implementation 'com.jpardogo.googleprogressbar:library:1.2.0'
+    implementation 'com.aseem.versatileprogressbar:MultiProgressBar:1.1.0'
+
+    //send mail through SMTP
+    implementation 'com.sun.mail:android-mail:1.6.6'
+    implementation 'com.sun.mail:android-activation:1.6.6'
+
+    //App center
+    implementation "com.microsoft.appcenter:appcenter-analytics:3.3.0"
+    implementation "com.microsoft.appcenter:appcenter-crashes:3.3.0"
+}

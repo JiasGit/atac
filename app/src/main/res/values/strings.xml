@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">community</string>
+    <string name="back">Back</string>
+    <string name="enter_valid_email">Please endter a valid email address!</string>
+    <string name="enter_valid_password">Please enter a valid password!</string>
+    <string name="enter_valid_number">Please enter a valid phone number!</string>
+    <string name="login_with_email">Login with Email and Password</string>
+    <string name="email_address">Email address</string>
+    <string name="enter_email">Enter your email address</string>
+    <string name="enter_password">Enter your password</string>
+    <string name="forgot_pw">Forgot Password?</string>
+    <string name="terms">I have reviewed and Agree to the Terms and Conditions</string>
+    <string name="login">Login</string>
+    <string name="connected_community">Connected Community</string>
+    <string name="login_phone">Login with phone</string>
+    <string name="login_email">Login with Email</string>
+    <string name="request_account">Request A New Account</string>
+    <string name="login_with_phone">Login with Phone number</string>
+    <string name="phone_number">Phone number</string>
+    <string name="next">Next</string>
+    <string name="otp">OTP</string>
+    <string name="available_properties">Available properties to join</string>
+    <string name="welcome">Welcome</string>
+    <string name="your_name">Your Name</string>
+    <string name="your_email">Your Email</string>
+    <string name="you_are">You are</string>
+    <string name="owner">Owner</string>
+    <string name="tenant">Tenant</string>
+    <string name="your_block">Your block</string>
+    <string name="your_unit">Your unit</string>
+    <string name="sg_only">Only Singapore Phone No. is supported.</string>
+    <string name="join">Join</string>
+    <string name="request_agree_terms">Please agree the terms and conditions to proceed!</string>
+    <string name="enter_valid_name">Please enter a vaild name!</string>
+    <string name="no_radio_checked">Please select owner or tenant!</string>
+    <string name="home">Home</string>
+    <string name="door">Door</string>
+    <string name="visitor">Visitor</string>
+    <string name="more">More</string>
+
+</resources>
